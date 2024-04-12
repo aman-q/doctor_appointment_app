@@ -12,13 +12,19 @@ import {
   } from "@react-email/components";
   import * as React from "react";
   
+ 
   
   const baseUrl = process.env.VERCEL_URL
     ? `https://${process.env.VERCEL_URL}`
-    : "https://localhost:3000";
+    : "http://localhost:3000";
   
-  export const Bookingmail = ({
-    userFirstname="test user",
+  export const EmailTemplate = ({
+    UserName,
+    Email,
+    Time,
+    Date,
+    doctor,
+    Note
   }) => (
     <Html>
       <Head />
@@ -31,27 +37,26 @@ import {
             src={`${baseUrl}/logo.svg`}
             width="170"
             height="50"
-            alt="logo"
+            alt="Koala"
             style={logo}
           />
-          <Text style={paragraph}>Hi {userFirstname},</Text>
+          <Text style={paragraph}>Hi {UserName},</Text>
           <Text style={paragraph}>
-            Welcome to Koala, the sales intelligence platform that helps you
-            uncover qualified leads and close deals faster.
+           Your Appointment with {doctor} has booked on {Date} at {Time}
           </Text>
-          <Section style={btnContainer}>
+          {/* <Section style={btnContainer}>
             <Button style={button} href="https://getkoala.com">
               Get started
             </Button>
-          </Section>
+          </Section> */}
           <Text style={paragraph}>
             Best,
             <br />
-            The Koala team
+            ClinicClick App 
           </Text>
           <Hr style={hr} />
           <Text style={footer}>
-            470 Noor Ave STE B #1148, South San Francisco, CA 94080
+            Developed by TubeGuruji!
           </Text>
         </Container>
       </Body>
@@ -60,7 +65,7 @@ import {
   
 
   
-  export default Bookingmail;
+  export default EmailTemplate;
   
   const main = {
     backgroundColor: "#ffffff",
@@ -83,7 +88,7 @@ import {
   };
   
   const btnContainer = {
-    textAlign: "center" ,
+    textAlign: "center",
   };
   
   const button = {
@@ -92,7 +97,7 @@ import {
     color: "#fff",
     fontSize: "16px",
     textDecoration: "none",
-    textAlign: "center" ,
+    textAlign: "center",
     display: "block",
     padding: "12px",
   };
