@@ -1,6 +1,6 @@
 import { Resend } from "resend";
 import { NextResponse } from "next/server";
-import Bookingmail from "@/emails";
+import EmailTemplate from "@/emails";
 const resend = new Resend(process.env.RESEND_API_KEY);
 export async function POST(req)
 {
@@ -10,7 +10,7 @@ export async function POST(req)
             from: 'Doctor-app@anwesh2k24.info',
             to: [response.data.Email],
             subject: 'Appointment Booking Confirmation',
-            react: Bookingmail({response})
+            react: EmailTemplate({response})
           });
         return NextResponse.json({data})
     }
