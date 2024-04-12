@@ -26,7 +26,7 @@ const getUserBookingList=(userEmail)=>axiosClient.get("/appointments?[filters][E
 
 const deleteBooking=(id)=>axiosClient.delete('/appointments/'+id)
 
-const sendEmail=(data)=>axios.post('/api/sendEmail',data);
+
 
 export default{
     getCategory,
@@ -37,5 +37,4 @@ export default{
     sendEmail,
     getUserBookingList,
     deleteBooking,
-    sendEmail
 }
